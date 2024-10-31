@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIR-BNB-Add New Listing</title>
+</head>
+<body>
+    <h3> Add New listing</h3>
+    <form method="POST" action="/listings">
+        <input name=listing[title] placeholder="Enter title of the property" type="text"/>
+        <br><br>
+        <textarea name=listing[description] placeholder="Enter description for the property" type="text"></textarea>
+        <br><br>
+        <input name=listing[image] placeholder="Enter URL for property image" type="text"/>
+        <br><br>
+        <input name=listing[price] placeholder="Enter price per night for property " type="number"/>
+        <br><br>
+        <input name=listing[location] placeholder="Enter location of the property" type="text"/>
+        <br><br>
+        <input name=listing[country] placeholder="Enter country of the property" type="text"/>
+        <br><br>
+        <button type="submit">
+            ADD
+        </button>
+    </form>
+    <br>
+
+    <form method="GET" action="/listings">
+        <button>
+            Go To Home Page
+        </button>
+    </form>
+</body>
+</html>
