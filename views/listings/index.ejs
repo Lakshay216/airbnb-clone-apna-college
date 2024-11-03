@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIR-BNB</title>
-</head>
+<% layout('/layouts/boilerplate') %>
 <body>
-    <h3> All The Listings </h3>
-    <ul>
-        <form method="GET" action="listings/new">
+   
+        <!-- <form method="GET" action="listings/new">
             <button> Create New Listing</button>
-        </form>
-        <br><br>
-        <%for(listing of allListings){%>
-            <li>
-                <a href="/listings/<%= listing._id%>"> <%= listing.title%></a> 
-            </li>
-       <% }%>
-    </ul>
+        </form> -->
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+            <%for(listing of allListings){%>
+                <a class="listing-link" href="/listings/<%= listing._id %>" > 
+                    <div class="card col" >
+                        <img src="<%= listing.image %>" class="card-img-top" alt="listing-image">
+                        <div class="card-img-overlay"></div>
+                    
+                    <div class="card-body">
+                      <p class="card-text"><b><%= listing.title %></b></p>
+                      <p class="card-text">₹<%= listing.price.toLocaleString('en-IN')%></p>
+
+                    </div>
+                  </div></a>
+                
+                  <% }%>
+        </div>
 </body>
-</html>
