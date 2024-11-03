@@ -1,27 +1,35 @@
 <% layout('/layouts/boilerplate') %>
-
+<div class="row">
+    <div class="col-8 offset-2">
 <body>
     <h3>listing details</h3>
-    <ul>
-        <li><%= listing.title%></li>
-        <li><%= listing.description%></li>
-        <li>₹<%= listing.price.toLocaleString('en-IN')%></li>
-        <li><%= listing.location%></li>
-        <li><%= listing.country%></li>
-    </ul>
-    <a href="/listings/<%= listing._id %>/edit"> 
-        Edit this listing
-    </a>
-    <br><br>
+    <div class="card">
+        <img class="card-img-top show-image" src="<%= listing.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= listing.title %></h5>
+          <p class="card-text"><%= listing.description %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">₹<%= listing.price.toLocaleString('en-IN')%></li>
+          <li class="list-group-item"><%= listing.location%></li>
+          <li class="list-group-item"><%= listing.country%></li>
+        </ul>
+        <div class="card-body">
+          <a href="/listings/<%= listing._id %>/edit" class=" btn btn-dark btn-edit">Edit listing</a>
+          <!-- <a href="#" class="btn btn-dark btn-edit">Another link</a> -->
+        </div>
+      </div>
+    
     <!-- <form method="GET" action="/listings">
         <button>
             Go To Home Page
         </button>
     </form> -->
-    <br>
     <form method="POST" action="/listings/<%= listing._id%>?_method=DELETE">
-        <button type="submit">
+        <button class="btn btn-dark btn-edit " type="submit">
            Remove This listing
         </button>
     </form>
 </body>
+</div>
+</div>
