@@ -11,6 +11,7 @@ body{
 /* navbar */
 .navbar{
     height: 5rem;
+    background-color: white;
 }
 .fa-compass{
     color: #fe424d;
@@ -88,5 +89,5 @@ body{
 /* show page */
 .show-image{
     height: 30vh;
-    
+
 }
