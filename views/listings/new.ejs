@@ -1,0 +1,63 @@
+<% layout('/layouts/boilerplate') %>
+<div class="row">
+    <div class="col-8 offset-2">
+<body>
+    <br> <br> <br>
+    <h3> Add New listing</h3>
+    <form class="needs-validation" method="POST" action="/listings" novalidate enctype="multipart/form-data">
+        <div>
+            <label for="title" class="form-label">Title</label>
+            <input name=listing[title] placeholder="Enter title of the property" type="text" class="form-control" required/>
+            <div class="invalid-feedback">Please Enter a Title!</div>
+        </div>
+       
+        <div>
+            <label for="description" class="form-label">Description</label>
+            <textarea name=listing[description] placeholder="Enter description for the property" class="form-control" type="text" required></textarea>
+            <div class="invalid-feedback">Please Enter a short Description!</div> 
+        </div>
+
+        <div>
+            <label for="image" class="form-label">Upload Listing Image</label>
+            <input name=listing[image] class="form-control" type="file" required/>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">Price Per Night</label>
+                <input name=listing[price] placeholder="Enter price per night  " class="form-control" type="text" required/>
+                <div class="invalid-feedback">Please Enter a valid Price!</div>
+            </div>
+    
+           
+            <div class="mb-3 col-md-8">
+                <label for="location" class="form-label">Location</label>
+                <input name=listing[location] placeholder="Enter location of the property" class="form-control" type="text" required/>
+                <div class="invalid-feedback">Please Enter a Location!</div>
+            </div>
+        </div>
+       
+
+       
+        <div>
+            <label for="country" class="form-label">Country</label>
+            <input name=listing[country] placeholder="Enter country of the property" class="form-control" type="text" required/>
+            <div class="invalid-feedback">Please Enter a Country!</div>
+
+        </div>
+
+        <br><br>
+        <button class="btn btn-dark btn-add" type="submit">
+            ADD
+        </button>
+    </form>
+    <br>
+
+    <!-- <form method="GET" action="/listings">
+        <button>
+            Go To Home Page
+        </button>
+    </form> -->
+</body>
+<br> <br> <br>
+</div>
+</div>

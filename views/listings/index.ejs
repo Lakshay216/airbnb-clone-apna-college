@@ -1,0 +1,89 @@
+<% layout('/layouts/boilerplate') %>
+<style>
+    #filter{
+        margin-top: 1rem;
+        font-size: small;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .filter{
+        text-align: center;
+        margin-right: 3.3rem;
+        margin-top: 1rem;
+        opacity: 0.7;
+    }
+    .filter:hover{
+        opacity: 1;
+        cursor: pointer;
+    }
+</style>
+<body>
+   
+    <div id="filter">
+        <div class="filter">
+            <i class="fa-solid fa-fire"></i>
+            <p>Trending</p>
+        </div>
+       <div class="filter">
+        <i class="fa-solid fa-bed"></i>
+        <p>Rooms</p>
+       </div>
+       <div class="filter">
+        <i class="fa-solid fa-mountain-city"></i>
+        <p>Iconic Cities</p>
+       </div>
+       <div class="filter">
+        <i class="fa-solid fa-mountain"></i>
+        <p>Hill Stations</p>
+       </div>
+       <div class="filter">
+        <i class="fa-solid fa-person-swimming"></i>    
+            <p>Amazing Pools</p>
+       </div>
+       <div class="filter">
+        <i class="fa-brands fa-fort-awesome"></i>
+                <p>Castle</p>
+       </div>
+       <div class="filter">
+        <i class="fa-brands fa-free-code-camp"></i>
+                <p>Camping</p>
+       </div>
+       <div class="filter">
+        <i class="fa-solid fa-cow"></i>
+        <p>Farms</p>
+       </div>
+       <div class="filter">
+        <i class="fa-solid fa-mountain"></i>
+        <p>Hill Stations</p>
+       </div>
+       <div class="filter">
+        <i class="fa-regular fa-snowflake"></i>
+        <p>arctic</p>
+       </div>
+       <div class="filter">
+        <i class="fa-solid fa-igloo"></i>
+        <p>Domes</p>
+       </div>
+       <div class="filter">
+        <i class="fa-solid fa-ship"></i>
+        <p>Boats</p>
+       </div>
+    </div>
+ 
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 ">
+            <%for(listing of allListings){%>
+                <a class="listing-link" href="/listings/<%= listing._id %>" > 
+                    <div class="listing-card card col" >
+                        <img src="<%= listing.image.url %>" class="card-img-top" alt="listing-image">
+                        <div class="card-img-overlay"></div>
+                    
+                    <div class="card-body">
+                      <p class="card-text"><b><%= listing.title %></b></p>
+                      <p class="card-text">$<%= listing.price.toLocaleString('en-IN')%></p>
+
+                    </div>
+                  </div></a>
+                
+                  <% }%>
+        </div>
+</body>
