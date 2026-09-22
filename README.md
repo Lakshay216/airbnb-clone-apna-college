@@ -91,6 +91,4 @@ For the demo, stop the production application temporarily and show the
 `AirbnbApplicationDown` rule changing from pending to firing in Prometheus.
 Start the application again after recording the demonstration.
 
-Prometheus continuously evaluates the rules. For a stronger final demo, add
-your own email contact point in Grafana so the firing rule also produces a
-visible notification.
+\
