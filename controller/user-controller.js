@@ -26,7 +26,7 @@ module.exports.login =  async(req,res)=>{
    const reqUrl = res.locals.redirectUrl || '/listings'
     res.redirect(reqUrl);
 }
-module.exports.logOut = (req,res)=>{
+module.exports.logOut = (req,res,next)=>{
     req.logOut((err)=>{
         if(err){
             next(err);

@@ -1,0 +1,19 @@
+groups:
+  - name: airbnb-application
+    rules:
+      - alert: AirbnbApplicationDown
+        expr: up{job="airbnb-app"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: Airbnb application is unavailable
+          description: Prometheus has been unable to reach the application for one minute.
+
+      - alert: AirbnbServerErrors
+        expr: increase(airbnb_http_server_errors_total[5m]) > 5
+        labels:
+          severity: warning
+        annotations:
+          summary: Airbnb application is returning server errors
+          description: More than five HTTP 5xx responses were recorded in five minutes.

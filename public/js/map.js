@@ -7,7 +7,7 @@
     });
     // console.log(coordinates)
 
-    const marker1 = new mapboxgl.Marker()
+    new mapboxgl.Marker()
         .setLngLat(listing.geometry.coordinates)
         .setPopup(
           new mapboxgl.Popup({offset:25}).setHTML(

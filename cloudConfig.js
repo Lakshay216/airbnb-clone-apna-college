@@ -1,20 +1,30 @@
 const cloudinary = require('cloudinary').v2;
-const {CloudinaryStorage} = require('multer-storage-cloudinary')
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
-    api_key : process.env.CLOUD_API_KEY,
+    api_key: process.env.CLOUD_API_KEY,
     api_secret: process.env.CLOUD_API_SECRET,
-})
+});
 
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: {
-      folder: 'airBnb clone',
-      allowedFormat: ['png','jpg','jpeg'],
-    },
-  });
+function uploadImage(fileBuffer) {
+    return new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream(
+            {
+                folder: 'airbnb-clone',
+                resource_type: 'image',
+                allowed_formats: ['png', 'jpg', 'jpeg'],
+            },
+            (error, result) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(result);
+                }
+            }
+        );
 
-  module.exports ={
-     cloudinary,storage,
-  }
+        uploadStream.end(fileBuffer);
+    });
+}
+
+module.exports = { cloudinary, uploadImage };

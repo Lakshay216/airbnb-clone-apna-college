@@ -1,9 +1,13 @@
 const review = require('../models/review.js');
 const Listing = require('../models/listing.js');
+const expressError = require('../utils/expressError.js');
 
 //post route
 module.exports.post_review = async(req,res)=>{
     let listing = await Listing.findById(req.params.id);
+    if (!listing) {
+        throw new expressError(404, 'Listing not found');
+    }
     let newReview = new review(req.body.review);
     newReview.author = req.user._id;
 
@@ -19,6 +23,10 @@ module.exports.post_review = async(req,res)=>{
 //delete route
 module.exports.destroy_review =async (req, res) => {
     let { id, reviewId } = req.params; // Extract both id and reviewId from params
+    const existingReview = await review.findById(reviewId);
+    if (!existingReview) {
+        throw new expressError(404, 'Review not found');
+    }
     await Listing.findByIdAndUpdate(id, { $pull: { review: reviewId } }); // Pull the review from the listing
     await review.findByIdAndDelete(reviewId); // Delete the review itself
     req.flash('success', 'Review Deleted');
