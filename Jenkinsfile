@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'airbnb-clone'
         IMAGE_TAG = "${BUILD_NUMBER}"
+        PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${env.PATH}"
     }
 
     options {
