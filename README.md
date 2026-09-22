@@ -91,4 +91,3 @@ For the demo, stop the production application temporarily and show the
 `AirbnbApplicationDown` rule changing from pending to firing in Prometheus.
 Start the application again after recording the demonstration.
 
-\
