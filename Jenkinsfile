@@ -124,7 +124,12 @@ pipeline {
                         docker compose -p airbnb-production --profile monitoring up -d --no-deps prometheus grafana
 
                         curl -fsS http://localhost:8082/metrics
-                        curl -fsS http://localhost:9090/-/ready
+
+                        for attempt in 1 2 3 4 5 6; do
+                            curl -fsS http://localhost:9090/-/ready && exit 0
+                            sleep 5
+                        done
+                        exit 1
                     '''
                 }
             }
