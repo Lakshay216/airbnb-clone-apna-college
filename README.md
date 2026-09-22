@@ -76,7 +76,8 @@ Set an `ALERT_EMAIL` environment variable in the Jenkins job if the Mailer
 plugin should notify you when a stage fails.
 
 The staging application uses port 8081 and a separate Docker database. The
-release application uses port 8080 and another separate database. The same
+release application uses port 8082 and another separate database, leaving
+Jenkins free to use its usual port 8080. The same
 versioned Docker image is promoted from staging to release.
 
 ## Monitoring alert demonstration

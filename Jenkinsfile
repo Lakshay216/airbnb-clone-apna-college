@@ -97,12 +97,12 @@ pipeline {
                         docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:release-$IMAGE_TAG
 
                         APP_IMAGE=$IMAGE_NAME:release-$IMAGE_TAG \
-                        APP_PORT=8080 \
+                        APP_PORT=8082 \
                         MONGO_DATABASE=airbnb_production \
                         docker compose -p airbnb-production up -d app
 
                         for attempt in 1 2 3 4 5 6; do
-                            curl -fsS http://localhost:8080/health && exit 0
+                            curl -fsS http://localhost:8082/health && exit 0
                             sleep 5
                         done
                         exit 1
@@ -118,11 +118,11 @@ pipeline {
                 ]) {
                     sh '''
                         APP_IMAGE=$IMAGE_NAME:release-$IMAGE_TAG \
-                        APP_PORT=8080 \
+                        APP_PORT=8082 \
                         MONGO_DATABASE=airbnb_production \
                         docker compose -p airbnb-production --profile monitoring up -d --no-deps prometheus grafana
 
-                        curl -fsS http://localhost:8080/metrics
+                        curl -fsS http://localhost:8082/metrics
                         curl -fsS http://localhost:9090/-/ready
                     '''
                 }
