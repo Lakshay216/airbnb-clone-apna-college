@@ -15,7 +15,6 @@ The repository also contains a seven-stage Jenkins pipeline for the SIT223
 4. Start the application with `npm start`.
 5. Open `http://localhost:8080`.
 
-The existing local database is not seeded or reset by these instructions.
 
 ## Checks
 
@@ -87,7 +86,4 @@ Prometheus loads two alert rules from `monitoring/alerts.yml`:
 - the application is unavailable for one minute;
 - more than five server errors occur within five minutes.
 
-For the demo, stop the production application temporarily and show the
-`AirbnbApplicationDown` rule changing from pending to firing in Prometheus.
-Start the application again after recording the demonstration.
 
